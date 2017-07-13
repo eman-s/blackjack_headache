@@ -53,33 +53,27 @@
 //       value: 11 || 1,
 //     }
 // }
-var cards = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-var values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-let hand = ['2', '2', '8'];
+
+
 
 
 
 function handValue (hand) {
 
-  for (let i = 0; i < cards.length; i++) {
-    for (let j = 0; j < values.length; j++) {
-      if (cards[i] === "A") {
-         cards[i] = 11 || 1;
-      }else {
-        if (cards[i] === "J" || "Q" || "K") {
-           cards[i] = 13;
-        }else {
-          return values[j];
-
-
-        }
-      }
+  let handTotal = 0
+  for ( var i = 0; i < hand.length; i++ ){
+    if (hand[i]==='J'||hand[i]==='Q'||hand[i]==='K'){
+      handTotal += 10;
+    }else if (hand[i]==='A' && handTotal <= 11){
+      handTotal += 11;
+    }else if(hand[i]==='A'){
+      handTotal += 1;
+    }else{
+      handTotal += Number(hand[i]);
     }
-    console.log(cards[i]);
-  }
-
 }
-
+return handTotal;
+}
 
 /* -----  Hints ------
 
