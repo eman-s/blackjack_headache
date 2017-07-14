@@ -64,12 +64,15 @@ function handValue (hand) {
   for ( var i = 0; i < hand.length; i++ ){
     if (hand[i]==='J'||hand[i]==='Q'||hand[i]==='K'){
       handTotal += 10;
-    }else if (hand[i]==='A' && handTotal <= 11){
-      handTotal += 11;
-    }else if(hand[i]==='A'){
+    }else if (hand[i]==='A'&& handTotal >= 11){
       handTotal += 1;
+    }else if(hand[i]==='A' && handTotal <= 11){
+      handTotal += 11;
     }else{
       handTotal += Number(hand[i]);
+    }
+    if( hand.includes('A') && handTotal > 21){
+      handTotal -= 10;
     }
 }
 return handTotal;
